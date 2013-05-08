@@ -1,17 +1,18 @@
-class Sorter{
+class Sorter<T>{
 	
-	String [] words;
+	T [] unsorted;
 
-	Sorter(String [] wordsToSort){
-		words = wordsToSort;
+	Sorter(T [] toSort){
+		unsorted = toToSort;
 	}
 
 
-	public String[] sortWords{
-		
+	public T[] sort(){
+		return words;
 	}
 
 
+	
 
 
 }

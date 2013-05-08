@@ -27,5 +27,9 @@ class CollectWords{
 
 	}
 
+	public String[] getWords(){
+		return words;
+	}
+
 
 }
