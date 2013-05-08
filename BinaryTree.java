@@ -1,15 +1,15 @@
-class BinaryTree<T> implements Comparable<T>{
+class BinaryTree{
 
 	class Node{
-		T value;
+		String value;
 		Node left;
 		Node right;
 
-		Node(T value){
+		Node(String value){
 			this.value = value;
 		}
 
-		public T getValue(){
+		public String getValue(){
 			return value;
 		}
 
@@ -41,10 +41,5 @@ class BinaryTree<T> implements Comparable<T>{
 
 
 
-
-
-	/*public int compareTo(T o){
-
-	}*/
 
 }
