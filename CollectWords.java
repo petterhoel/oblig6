@@ -20,7 +20,7 @@ class CollectWords{
 				if (counter >= words.length) {System.out.println("too many words");};
 				word = sc.nextLine().trim();
 				if (!word.equals("")) words[counter++] = word;	
-				System.out.println(counter + "\t " +word);
+				//System.out.println(counter + "\t " +word);
 			}
 			
 		} catch (Exception e){System.exit(1);System.out.println("ERROR: something went wrong reading file");}

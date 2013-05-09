@@ -1,4 +1,7 @@
 class BinaryTree{
+	int size = 0;
+	Node root;
+	static int counter = 0;
 
 	class Node{
 		String value;
@@ -25,19 +28,36 @@ class BinaryTree{
 		}
 
 		public void print(){
-			if (right != null) right.print();
-			printValue();
-			if  (left != null) left.print();
+			if (left != null) left.print();
+			System.out.println(value);
+			if  (right != null) right.print();
 		}
 
-		private void printValue(){
-			System.out.println(value.toString());
+		public int toArray(String[] sorted, int index){
+			if (left != null) index = left.toArray(sorted, index);
+			sorted[index++] = value;
+			if  (right != null) index = right.toArray(sorted, index);
+			return index;
 		}
-
-
 	}
 
 
+	public String[] toArray(int size){
+		String[] sorted = new String[size];
+		root.toArray(sorted, 0);
+		return sorted;
+	}
+
+
+	public void insert(String value){
+		if (root == null) root = new Node(value);
+		else root.insert(new Node(value));
+		size++;
+	}
+
+	public void print(){
+		root.print();
+	}
 
 
 
