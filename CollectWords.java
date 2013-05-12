@@ -22,7 +22,7 @@ class CollectWords{
 				if (!word.equals("")) words[counter++] = word;	
 				//System.out.println(counter + "\t " +word);
 			}
-			
+			sc.close();
 		} catch (Exception e){System.exit(1);System.out.println("ERROR: something went wrong reading file");}
 
 	}
