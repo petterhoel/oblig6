@@ -9,6 +9,9 @@ class Sort{
 		CollectWords cw = new CollectWords(fileToBeSorted);
 		ArraySplitter as = new ArraySplitter(cw.getWords());
 		as.print();
+		Merge me = new Merge(as.getSplit());
+		System.out.println("i rekkefølge: ");
+		for (String s: me.merge())System.out.println(s);
 		/*Sorter sorter = new Sorter(cw.getWords());
 		String[] sorted = sorter.sort();
 		writeToFile(sorted, fileSorted);*/

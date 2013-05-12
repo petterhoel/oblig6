@@ -17,7 +17,7 @@ class BinaryTree{
 		}
 
 		public void insert(Node node){
-			if (node.getValue().compareTo(getValue()) > 0) {
+			if (node.getValue().compareToIgnoreCase(getValue()) > 0) {
 				if (right == null) right = node;
 				else right.insert(node);
 			}
