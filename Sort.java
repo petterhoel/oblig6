@@ -7,8 +7,6 @@ class Sort{
 		String fileToBeSorted = args[1];
 		String fileSorted = args[2];
 		CollectWords cw = new CollectWords(fileToBeSorted);
-		String[] sa = new String[]{"ksks", "Mette", "Ola", "Geir", "Doffen"};
-		//ArraySplitter as = new ArraySplitter(sa);
 		ArraySplitter as = new ArraySplitter(cw.getWords());
 		as.print();
 		/*Sorter sorter = new Sorter(cw.getWords());

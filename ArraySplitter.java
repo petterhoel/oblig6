@@ -17,12 +17,12 @@ class ArraySplitter{
 
 
 	//test
-	public void print(){
+	/*public void print(){
 		System.out.println(values.length);
 		System.out.println("Array one: " + values[0].length);
 		for (int i = 0; i < values[0].length; i++) System.out.println(values[0][i]);
 		System.out.println("Array two: " + values[1].length);
 		for (int i = 0; i < values[1].length; i++) System.out.println(values[1][i]);
-	}
+	}*/
 	
 }
