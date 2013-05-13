@@ -7,9 +7,10 @@ class Sort{
 		String fileToBeSorted = args[1];
 		String fileSorted = args[2];
 		CollectWords cw = new CollectWords(fileToBeSorted);
-		SortThread thread = new SortThread(cw.getWords(), threadCnt);
-		thread.start();
-		writeToFile(thread.words, fileSorted);
+		ArraySplitter as = new ArraySplitter(cw.getWords(), threadCnt);
+		Block[] blocks = as.getBlocks();
+		System.out.println();
+		//writeToFile(thread.words, fileSorted);
 
 
 	}

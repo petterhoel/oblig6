@@ -1,27 +1,56 @@
 import java.util.Arrays;
 
 class ArraySplitter{
-	String[][] values;
+	int numOfBlocks;
+	int blockSize;
+	Block[] blocksOfWords;
+	int blocksWithOneMore;
 
-	ArraySplitter(String[] words){
-		int length = words.length/2;
-		values = new String[][] {Arrays.copyOfRange(words, 0, length), 
-								 Arrays.copyOfRange(words, length, words.length)};
+	ArraySplitter(String[] words, int numOfBlocks){
+		this.numOfBlocks = numOfBlocks;
+		blockSize = words.length/numOfBlocks;
+		blocksWithOneMore = words.length%numOfBlocks;
+		System.out.println("Blocks with one more: " + blocksWithOneMore);
+		blocksOfWords = toBlocks(words);
 	}
 
-	
-	public String[][] getSplit(){
-		return values;
+
+	public Block[] getBlocks(){
+		return blocksOfWords;
 	}
 
 
-	//test
-	/*public void print(){
-		System.out.println(values.length);
-		System.out.println("Array one: " + values[0].length);
-		for (int i = 0; i < values[0].length; i++) System.out.println(values[0][i]);
-		System.out.println("Array two: " + values[1].length);
-		for (int i = 0; i < values[1].length; i++) System.out.println(values[1][i]);
-	}*/
+	private Block[] toBlocks(String[] words){
+		Block[] blocks = new Block[numOfBlocks];
+		for (int i = 0; i < blocksWithOneMore; i++){
+			blocks[i] = new Block(getWords(words, i, true));
+			System.out.println(blocks[i].words.length);
+		}
+		for (int i = blocksWithOneMore; i < numOfBlocks; i++) {
+			blocks[i] = new Block(getWords(words, i, false));
+			System.out.println(blocks[i].words.length);
+		}
+		return blocks;
+	}
+
+	private String[] getWords(String[] words, int index, boolean extraword){
+		int startPosition;
+		int endPosition;
+		int size; 
+		if (extraword) {
+			startPosition = (index * blockSize) + index;
+			endPosition = startPosition + blockSize + 1;
+		} else {
+			startPosition = (index * blockSize) + blocksWithOneMore;
+			endPosition = startPosition + blockSize;
+		}
+		size = endPosition - startPosition;
+		String [] blockOfWords = new String[size];
+		int counter = 0;
+		for (int i = startPosition; i < endPosition; i++){
+			blockOfWords[counter] = words[i];
+		}
+		return blockOfWords; 
+	}
 	
 }

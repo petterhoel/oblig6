@@ -1,3 +1,4 @@
+/*
 class SortThread extends Thread { 
 	String [] words; 
 	int numOfChildren; 
@@ -76,4 +77,4 @@ class SortThread extends Thread {
  	
 
 	
-} // end SortThread
+} */
