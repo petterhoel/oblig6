@@ -7,14 +7,9 @@ class Sort{
 		String fileToBeSorted = args[1];
 		String fileSorted = args[2];
 		CollectWords cw = new CollectWords(fileToBeSorted);
-		ArraySplitter as = new ArraySplitter(cw.getWords());
-		as.print();
-		Merge me = new Merge(as.getSplit());
-		System.out.println("i rekkefølge: ");
-		for (String s: me.merge())System.out.println(s);
-		/*Sorter sorter = new Sorter(cw.getWords());
-		String[] sorted = sorter.sort();
-		writeToFile(sorted, fileSorted);*/
+		SortThread thread = new SortThread(cw.getWords(), threadCnt);
+		thread.start();
+		writeToFile(thread.words, fileSorted);
 
 
 	}
