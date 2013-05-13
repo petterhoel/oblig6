@@ -1,44 +1,25 @@
-/*
+
 class SortThread extends Thread { 
-	String [] words; 
-	int numOfChildren; 
-	private int smallestArray; 
-	SortThread parent; // parent er null i roten 
- 	int id = 0;
-
-
- 	// child 
- 	SortThread(String[] words, SortThread parent, int id, int smallestArray){ 
- 		this.smallestArray = smallestArray;
- 		this.words = words; 
- 		this.parent = parent; 
- 		this.id = id+1; 
- 		numOfChildren = 0;
+	Block words; 
+	
+ 	SortThread(Block words){ 
+ 		this.words = words;
  	}
 
-
- 	// root 
- 	SortThread(String[] words, int threadCnt){ 
- 		smallestArray = (words.length/threadCnt)+1;
- 		this.words = words;  
- 		parent = null; 
- 		id = 1; 
- 		numOfChildren = 0; 
- 	} 
-
-
 	public void run(){ 
-		sorter(words); 
-		waitForAll(); 
+		System.out.println("Thread started");
+		words.sort();
+		notify(); 
+		/*waitForAll(); 
 		if (parent != null) { 
  			// signaler at denne tråden er ferdig med jobben: 
 			parent.done(); 
  		} 
-		else {System.out.println("Done");} 
+		else {System.out.println("Done");} */
  	} // end of run 
 
 
- 	void sorter(String[] words) { 
+ 	/*void sorter(String[] words) { 
 		if (words.length > smallestArray) { 
 			numOfChildren += 2;
 			System.out.println("Thread started"); 
@@ -48,10 +29,10 @@ class SortThread extends Thread {
 			//sorter(words); // rekursivt kall
 		} 
 		else sort(words);
- 	} 
+ 	} */
  
 
- 	synchronized void waitForAll() { 
+ 	/*synchronized void waitForAll() { 
  		while (numOfChildren != 0) { // antall barn ikke ferdig 
  			try { 
 				wait(); 
@@ -61,9 +42,9 @@ class SortThread extends Thread {
  				System.exit(0); 
  			} 
  		} 
- 	} 
+ 	} */
 
-
+ 	/*
  	synchronized void done(){ 
  		numOfChildren--;
 
@@ -74,7 +55,7 @@ class SortThread extends Thread {
  	void sort(String[] words){ 
  			this.words = new Sorter(words).sort();
  	} 
- 	
+ 	*/
 
 	
-} */
+} 

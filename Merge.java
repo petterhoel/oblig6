@@ -1,19 +1,19 @@
 class Merge{
-	String [] merged;
+	//String [] merged;
 
-	Merge(String[][] toMerge){
-		merged = merge(toMerge);
-	}
+	/*Merge(String[] merge1, String[] merge2){
+		merged = merge(merge1, merge2);
+	}*/
 
-	public String[] merge(){
+	/*public String[] merge(){
 		return merged;
-	}
+	}*/
 
-	private String[] merge(String[][] toMerge){
-		int size  = toMerge[0].length + toMerge[1].length;
+	public String[] merge(String[] merge1, String[] merge2){
+		int size  = merge1.length + merge2.length;
 		BinaryTree bt = new BinaryTree();
-		for (int i = 0; i < toMerge[0].length; i++) bt.insert(toMerge[0][i]);
-		for (int i = 0; i < toMerge[1].length; i++) bt.insert(toMerge[1][i]);
+		for (int i = 0; i < merge1.length; i++) bt.insert(merge1[i]);
+		for (int i = 0; i < merge2.length; i++) bt.insert(merge2[i]);
 		return bt.toArray(size);
 	}
 }
