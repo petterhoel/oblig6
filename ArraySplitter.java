@@ -6,10 +6,10 @@ import java.util.concurrent.CountDownLatch;
 */
 class ArraySplitter{
 	CountDownLatch cdl;
-	int numOfBlocks;
-	int blockSize; // poor name as some blocks have an extra word, sorry!
-	Block[] blocksOfWords;
-	int blocksWithOneMore;
+	private int numOfBlocks;
+	private int blockSize; // poor name as some blocks have an extra word, sorry!
+	private Block[] blocksOfWords;
+	private int blocksWithOneMore;
 
 	ArraySplitter(String[] words, int numOfBlocks, CountDownLatch cdl){
 		this.cdl = cdl;

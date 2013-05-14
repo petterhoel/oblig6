@@ -3,7 +3,7 @@
 */
 class Sorter{
 	
-	Block[] blocks;
+	private Block[] blocks;
 
 	Sorter(Block[] blocks){
 		this.blocks = blocks;

@@ -1,12 +1,12 @@
 class BinaryTree{
-	int size = 0;
-	Node root;
-	static int counter = 0;
+	private int size = 0;
+	private Node root;
+	private static int counter = 0;
 
 	class Node{
-		String value;
-		Node left;
-		Node right;
+		private String value;
+		private Node left;
+		private Node right;
 
 		Node(String value){
 			this.value = value;
@@ -32,12 +32,14 @@ class BinaryTree{
 			}
 		}
 
+		// for testing debugging
+		/*
 		public void print(){
 			if (left != null) left.print();
 			System.out.println(value);
 			if  (right != null) right.print();
 		}
-
+		*/
 
 		protected int toArray(String[] sorted, int index){
 			if (left != null) index = left.toArray(sorted, index);
@@ -64,10 +66,13 @@ class BinaryTree{
 		size++;
 	}
 
+
+	//for testing and debugging
+	/*
 	public void print(){
 		root.print();
 	}
-
+	*/
 
 
 

@@ -1,15 +1,18 @@
 import java.util.*;
 import java.io.*;
 
+/*
+*Class collects words from file
+*/
 class CollectWords{
-	int counter = 0; //default start value
-	File file;
-	Scanner sc;
-	String word;
-	String[] words;
+	private int counter = 0; //default start value
+	private File file;
+	private Scanner sc;
+	private String word;
+	private String[] words;
 
 
-	public CollectWords(String fileWithWords){
+	CollectWords(String fileWithWords){
 		file = new File(fileWithWords);
 		try{
 			sc = new Scanner(file);
@@ -20,7 +23,6 @@ class CollectWords{
 				if (counter >= words.length) {System.out.println("too many words");};
 				word = sc.nextLine().trim();
 				if (!word.equals("")) words[counter++] = word;	
-				//System.out.println(counter + "\t " +word);
 			}
 			sc.close();
 		} catch (Exception e){System.exit(1);System.out.println("ERROR: something went wrong reading file");}

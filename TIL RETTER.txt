@@ -3,8 +3,10 @@ I mitt program går sorteringen gå i parallell. Desverre har jeg ikke implement
 
 Det er ikke noe i veien for å gjøre flettingen i parallell feks ved bruk av en monitor, men jeg har ikke rukket å uvikle og implementere en løsning på dette. Jeg forstår at dette ikke svarer til en av oppgavens krav, men håper likevel å få obligen godkjent sett i lys av at min løsning bruker tråder(under sortering), sorterer riktig, har en fornuftig struktur og hensiktsmessige algoritmer. 
 
+
 1. Parallellitet
 Flere tråder med sortering kan kjøre parallelt og flere tråder med fletting kan kjøre parallelt. Fletting og sortering kan skje parallelt, men fletting som skal skje paralellt med sorteringen må kun skje med variabler som er ferdig sortert. Dette kan kontrolleres med en monitor. Fletting med av usorterte variabler eller eller variabler som er under sortering må ikke forekomme. 
+
 
 2. Kjøretiden
 Flere antall ord vil øke kjøretiden. Kjører man operasjoner parallelt med tråder så kjøretiden reduseres, men mindre man bruker så mange tråder at systemet bruker mer tid på opprette og administrere trådene, enn systemet tjener på å bruke de. Da får man såkalt overhead. 
@@ -13,8 +15,9 @@ I mitt program så ser man at sorteringstiden (med tråder) minker hvis man øke
 
 Siden jeg ikke kjører flettingen med tåder så ser vi at maskinen bruker lang tid når den må flette mange ganger og må gjøre dette sekvensielt istedenfor paralellt. 
 
+
 Om rapporten nedenfor
-Dette er en test som jeg gjorde på kjøretid. Hvis man tar vekk det som er bortkommentert fra main så kan du kjøre programmet og få lignende rapporter for ditt kjøremiljø, skrevet til terminalen. Tidene som måles er ikke medregnet innlesning og skriving til fil. 
+Dette er en test som jeg gjorde på kjøretid. Hvis man tar vekk det som er bortkommentert fra main så kan du kjøre programmet og få lignende rapporter for ditt kjøremiljø, skrevet til terminalen. Tidene som måles er ikke medregnet innlesning og skriving til fil.  
 
 
 

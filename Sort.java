@@ -4,7 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 class Sort{
 	public static void main(String[] args) {
-		if (args.length != 3) {System.out.println("Program requrires 3 arguments. Consult readme.txt for more info");System.exit(1);}
+		if (args.length != 3) {System.out.println("Program requrires 3 arguments. Consult http://heim.ifi.uio.no/inf1010/v13/oblig/6/oblig6-2013-1-0.html for more info");System.exit(1);}
 		int threadCnt = Integer.parseInt(args[0]);
 		String fileToBeSorted = args[1];
 		String fileSorted = args[2];
