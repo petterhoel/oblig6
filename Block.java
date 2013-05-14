@@ -7,9 +7,9 @@ import java.util.concurrent.CountDownLatch;
 */
 class Block extends Thread{
 
-	String[] words;
-	int size;
-	CountDownLatch cdl;
+	private String[] words;
+	private int size;
+	private CountDownLatch cdl;
 
 	Block(String[] words, CountDownLatch cdl){
 		size = words.length;
@@ -30,7 +30,7 @@ class Block extends Thread{
 	/**
 	*Uses a binary tree to sort the contents of words
 	*/
-	public void sort(){
+	protected void sort(){
 		BinaryTree bt = new BinaryTree();
 		for (String s: words) bt.insert(s);
 		this.words = bt.toArray(words.length);

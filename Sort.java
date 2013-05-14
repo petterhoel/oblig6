@@ -12,28 +12,34 @@ class Sort{
 		CollectWords cw = new CollectWords(fileToBeSorted);
 		ArraySplitter as = new ArraySplitter(cw.getWords(), threadCnt, cdl);
 		Block[] blocks = as.getBlocks();
-		long startTime = System.currentTimeMillis();
+		//long startTime = System.currentTimeMillis();
+		
 		Sorter sorter = new Sorter(blocks); // setter igang sortering av blokkene
+		
 		try{
 			cdl.await();
 		}catch(Exception e){
 			System.exit(1);
 		}
+
+		/*
 		long endTime = System.currentTimeMillis();
 		long sortTime = endTime-startTime;
 		System.out.println();
-		System.out.println("Sort time:  " + sortTime);
+		System.out.println("Sort time:  " + sortTime + " (using threads)");
 		startTime = System.currentTimeMillis();
+		*/
 		ArrayMerger merger = new ArrayMerger();
 		String[] words = new String[0];
-		// trenger å merge i tråder
 		for (Block b: blocks) words = merger.mergeArrays(words, b.getBlock());
+		/*
 		endTime = System.currentTimeMillis();
 		long mergeTime = endTime - startTime;
-		System.out.println("Merge time: " + mergeTime);
+		System.out.println("Merge time: " + mergeTime + " (not using threads)");
 		System.out.println("Total time: " + (sortTime + mergeTime));
 		System.out.println("File: " + fileToBeSorted + " containing "+ words.length + " words using " + threadCnt+ " threads (all time measured in milliseconds)");
 		System.out.println();
+		*/
 		writeToFile(words, fileSorted);
 	}
 

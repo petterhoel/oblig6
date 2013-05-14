@@ -1,7 +1,92 @@
-1. Parallellitet
-I mitt program kan sorteringen gå i parallell. 
-Desverre har jeg ikke funnet en god løsning for å kjøre flettingen også i parallell. 
+Om løsningen
+I mitt program går sorteringen gå i parallell. Desverre har jeg ikke implementert noen løsning for å kjøre flettingen også i parallell. Jeg har brukt mye tid på å lage gode algoritmer for sortering (basert på binærtrestuktur) og fletting (faktisk fletting, ikke sammenslåing av arrays og sortering på nytt). 
 
+Det er ikke noe i veien for å gjøre flettingen i parallell feks ved bruk av en monitor, men jeg har ikke rukket å uvikle og implementere en løsning på dette. Jeg forstår at dette ikke svarer til en av oppgavens krav, men håper likevel å få obligen godkjent sett i lys av at min løsning bruker tråder(under sortering), sorterer riktig, har en fornuftig struktur og hensiktsmessige algoritmer. 
+
+1. Parallellitet
+Flere tråder med sortering kan kjøre parallelt og flere tråder med fletting kan kjøre parallelt. Fletting og sortering kan skje parallelt, men fletting som skal skje paralellt med sorteringen må kun skje med variabler som er ferdig sortert. Dette kan kontrolleres med en monitor. Fletting med av usorterte variabler eller eller variabler som er under sortering må ikke forekomme. 
 
 2. Kjøretiden
-Antall ord
+Flere antall ord vil øke kjøretiden. Kjører man operasjoner parallelt med tråder så kjøretiden reduseres, men mindre man bruker så mange tråder at systemet bruker mer tid på opprette og administrere trådene, enn systemet tjener på å bruke de. Da får man såkalt overhead. 
+
+I mitt program så ser man at sorteringstiden (med tråder) minker hvis man øker antall tråder, gitt at man har en viss datamengde å prossesere (altså gjelder ikke dette den lille filen names.txt). Hvis man lager en lattelig antall tåder, feks 3000 så får jeg overhead i alle tilfeller. 
+
+Siden jeg ikke kjører flettingen med tåder så ser vi at maskinen bruker lang tid når den må flette mange ganger og må gjøre dette sekvensielt istedenfor paralellt. 
+
+Om rapporten nedenfor
+Dette er en test som jeg gjorde på kjøretid. Hvis man tar vekk det som er bortkommentert fra main så kan du kjøre programmet og få lignende rapporter for ditt kjøremiljø, skrevet til terminalen. Tidene som måles er ikke medregnet innlesning og skriving til fil. 
+
+
+
+RAPPORT
+time measured in milliseconds
+-------------------------------------
+File: names.txt containing 5163 words
+------------------------------------- 
+
+1 thread
+Sort time:     47 with threads
+Merge time:     2 no threads
+Total time:    49
+
+5 threads
+Sort time:     56 with threads
+Merge time:     4 no threads
+Total time:    60
+ 
+1000 threads 
+Sort time:     90 with threads
+Merge time:    88 no threads
+Total time:   178
+
+3000 threads
+Sort time:    244 with threads
+Merge time:   151 no threads
+Total time:   395
+
+
+-----------------------------------------
+File: sowpods.txt containing 267751 words
+-----------------------------------------
+1 thread
+Sort time:    561 with threads
+Merge time:     7 no threads
+Total time:   568
+
+5 threads
+Sort time:    336 with threads
+Merge time:   128 no threads
+Total time:   464
+
+1000 threads 
+Sort time:    189 with threads
+Merge time: 15862 no threads
+Total time: 16051
+
+3000 threads
+Sort time:    331 with threads
+Merge time: 47450 no threads
+Total time: 47781
+
+--------------------------------------------
+File: linuxwords.txt containing 479623 words
+--------------------------------------------
+1 thread 
+Sort time:   1167 with threads
+Merge time:     6 no threads
+Total time:  1173
+
+5 threads 
+Sort time:    455 with threads
+Merge time:   243 no threads
+Total time:   698
+
+1000 threads
+Sort time:    243 with threads
+Merge time: 32889 no threads
+Total time: 33132
+
+3000 threads
+Sort time:    352 with threads
+Merge time: 96692 no threads
+Total time: 97044

@@ -1,11 +1,13 @@
 import java.util.concurrent.CountDownLatch;
 
-
-
+/**
+*Class splits an array of Strings into blocks of words, held by an array of Blocks
+*A CountDownLatch is passed to each block. 
+*/
 class ArraySplitter{
 	CountDownLatch cdl;
 	int numOfBlocks;
-	int blockSize;
+	int blockSize; // poor name as some blocks have an extra word, sorry!
 	Block[] blocksOfWords;
 	int blocksWithOneMore;
 
@@ -14,7 +16,6 @@ class ArraySplitter{
 		this.numOfBlocks = numOfBlocks;
 		blockSize = words.length/numOfBlocks;
 		blocksWithOneMore = words.length%numOfBlocks;
-		//System.out.println("Blocks with one more: " + blocksWithOneMore);
 		blocksOfWords = toBlocks(words);
 	}
 
@@ -24,19 +25,27 @@ class ArraySplitter{
 	}
 
 
+	/*
+	*Makes the blocks of words and fills the array of blocks
+	*Depending on the number of blocks and number of words (strings)
+	*some blocks will have an extra word. They are made first. 
+	*/
 	private Block[] toBlocks(String[] words){
 		Block[] blocks = new Block[numOfBlocks];
 		for (int i = 0; i < blocksWithOneMore; i++){
 			blocks[i] = new Block(getWords(words, i, true), cdl);
-			//System.out.println(blocks[i].words.length);
 		}
 		for (int i = blocksWithOneMore; i < numOfBlocks; i++) {
 			blocks[i] = new Block(getWords(words, i, false), cdl);
-			//System.out.println(blocks[i].words.length);
 		}
 		return blocks;
 	}
 
+
+	/**
+	*Finds the appropriate words in param words and returns an array of Stings
+	*containing only the approriate words. 
+	*/
 	private String[] getWords(String[] words, int index, boolean extraword){
 		int startPosition;
 		int endPosition;

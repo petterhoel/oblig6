@@ -6,6 +6,11 @@ class ArrayMerger{
 	/**
 	*Merges two arrays of Strings in an sorted order. 
 	*The merging is CaSeInSeNsItIvE
+	*This algorithm fills a string[], by always putting the smallest 
+	*value first. 
+	*
+	*In the case of any of the parameter Sting [] pointing to null
+	*the other parameter is returned. 
 	*/
 	public String[] mergeArrays(String[] first, String[] second){
 		if (first == null) return second;
