@@ -1,10 +1,16 @@
+import java.util.concurrent.CountDownLatch;
+
+
+
 class ArraySplitter{
+	CountDownLatch cdl;
 	int numOfBlocks;
 	int blockSize;
 	Block[] blocksOfWords;
 	int blocksWithOneMore;
 
-	ArraySplitter(String[] words, int numOfBlocks){
+	ArraySplitter(String[] words, int numOfBlocks, CountDownLatch cdl){
+		this.cdl = cdl;
 		this.numOfBlocks = numOfBlocks;
 		blockSize = words.length/numOfBlocks;
 		blocksWithOneMore = words.length%numOfBlocks;
@@ -21,11 +27,11 @@ class ArraySplitter{
 	private Block[] toBlocks(String[] words){
 		Block[] blocks = new Block[numOfBlocks];
 		for (int i = 0; i < blocksWithOneMore; i++){
-			blocks[i] = new Block(getWords(words, i, true));
+			blocks[i] = new Block(getWords(words, i, true), cdl);
 			//System.out.println(blocks[i].words.length);
 		}
 		for (int i = blocksWithOneMore; i < numOfBlocks; i++) {
-			blocks[i] = new Block(getWords(words, i, false));
+			blocks[i] = new Block(getWords(words, i, false), cdl);
 			//System.out.println(blocks[i].words.length);
 		}
 		return blocks;

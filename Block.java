@@ -1,3 +1,5 @@
+import java.util.concurrent.CountDownLatch;
+
 /**
 *A block holds a block of words in an array of Sting
 *
@@ -7,9 +9,11 @@ class Block extends Thread{
 
 	String[] words;
 	int size;
+	CountDownLatch cdl;
 
-	Block(String[] words){
+	Block(String[] words, CountDownLatch cdl){
 		size = words.length;
+		this.cdl = cdl;
 		this.words = words;
 	}
 
@@ -20,6 +24,7 @@ class Block extends Thread{
 
 	public void run(){
 		sort();
+		cdl.countDown();
 	}
 
 	/**
