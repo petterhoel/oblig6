@@ -1,5 +1,12 @@
+/**
+*An arraymerger does nothing besides merging two arrays
+*/
 class ArrayMerger{
 
+	/**
+	*Merges two arrays of Strings in an sorted order. 
+	*The merging is CaSeInSeNsItIvE
+	*/
 	public String[] mergeArrays(String[] first, String[] second){
 		if (first == null) return second;
 		if (second == null) return first;
@@ -22,6 +29,7 @@ class ArrayMerger{
 		while (k < second.length) {
 			sorted[i++] = second[k++];
 		}
+
 		return sorted;
 	}
 }

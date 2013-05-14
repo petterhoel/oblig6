@@ -1,3 +1,6 @@
+/**
+*A sorter holds an array of Blocks and sorts each block when instansiated. 
+*/
 class Sorter{
 	
 	Block[] blocks;

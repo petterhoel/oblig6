@@ -1,0 +1,7 @@
+1. Parallellitet
+I mitt program kan sorteringen gå i parallell. 
+Desverre har jeg ikke funnet en god løsning for å kjøre flettingen også i parallell. 
+
+
+2. Kjøretiden
+Antall ord

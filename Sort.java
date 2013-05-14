@@ -12,17 +12,19 @@ class Sort{
 		ArraySplitter as = new ArraySplitter(cw.getWords(), threadCnt);
 		CountDownLatch cdl = new CountDownLatch(threadCnt);
 		Block[] blocks = as.getBlocks();
-		Sorter sorter = new Sorter(blocks);
+		long startTime = System.currentTimeMillis();
+		Sorter sorter = new Sorter(blocks); // setter igang sortering av blokkene
+		long endTime = System.currentTimeMillis();
+		System.out.println("Sort time: " + (endTime-startTime) + "("+ threadCnt+" threads)");
 		ArrayMerger merger = new ArrayMerger();
 		String[] words = new String[0];
-
 		// trenger å merge i tråder
-		for (Block b: blocks) words = merger.mergeArrays(words, b.getBlock(), cdl);
-		try{
+		for (Block b: blocks) words = merger.mergeArrays(words, b.getBlock());
+		/*try{
 			cdl.await(); // <-----Main
 		}catch(Exception e){
 			System.exit(1);
-		}
+		}*/
 		writeToFile(words, fileSorted);
 	}
 

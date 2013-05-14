@@ -16,14 +16,19 @@ class BinaryTree{
 			return value;
 		}
 
+		/**
+		*Inserts a new node to the tree. If the nodes value is lexicographically 
+		*smaller than this.value it is sent to the left if it is the same or larger
+		*it will be sent to the right.  
+		*/
 		public void insert(Node node){
-			if (node.getValue().compareToIgnoreCase(getValue()) > 0) {
-				if (right == null) right = node;
-				else right.insert(node);
-			}
-			else {
+			if (node.getValue().compareToIgnoreCase(getValue()) < 0) {
 				if (left == null) left = node;
 				else left.insert(node);
+			}
+			else {
+				if (right == null) right = node;
+				else right.insert(node);
 			}
 		}
 
@@ -33,7 +38,8 @@ class BinaryTree{
 			if  (right != null) right.print();
 		}
 
-		public int toArray(String[] sorted, int index){
+
+		protected int toArray(String[] sorted, int index){
 			if (left != null) index = left.toArray(sorted, index);
 			sorted[index++] = value;
 			if  (right != null) index = right.toArray(sorted, index);
@@ -41,7 +47,10 @@ class BinaryTree{
 		}
 	}
 
-
+	/**
+	*Method returns an array of Strings that is sorted
+	*lexicographically, ignoring case differences.
+	*/
 	public String[] toArray(int size){
 		String[] sorted = new String[size];
 		root.toArray(sorted, 0);
