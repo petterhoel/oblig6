@@ -1,8 +1,10 @@
 class Block extends Thread{
 
 	String[] words;
+	int size;
 
 	Block(String[] words){
+		size = words.length;
 		this.words = words;
 	}
 
@@ -19,6 +21,10 @@ class Block extends Thread{
 		BinaryTree bt = new BinaryTree();
 		for (String s: words) bt.insert(s);
 		this.words = bt.toArray(words.length);; 
+	}
+
+	public int size(){
+		return size;
 	}
 
 	public void print(){
