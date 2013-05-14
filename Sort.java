@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.concurrent.CountDownLatch;
+
 
 class Sort{
 	public static void main(String[] args) {
@@ -8,14 +10,20 @@ class Sort{
 		String fileSorted = args[2];
 		CollectWords cw = new CollectWords(fileToBeSorted);
 		ArraySplitter as = new ArraySplitter(cw.getWords(), threadCnt);
+		CountDownLatch cdl = new CountDownLatch(threadCnt);
 		Block[] blocks = as.getBlocks();
 		Sorter sorter = new Sorter(blocks);
 		ArrayMerger merger = new ArrayMerger();
 		String[] words = new String[0];
-		for (Block b: blocks) words = merger.mergeArrays(words, b.getBlock());
+
+		// trenger å merge i tråder
+		for (Block b: blocks) words = merger.mergeArrays(words, b.getBlock(), cdl);
+		try{
+			cdl.await(); // <-----Main
+		}catch(Exception e){
+			System.exit(1);
+		}
 		writeToFile(words, fileSorted);
-
-
 	}
 
 public static void writeToFile(String[] arrayToWrite, String filename){

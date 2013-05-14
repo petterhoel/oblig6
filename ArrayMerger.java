@@ -1,6 +1,5 @@
 class ArrayMerger{
 
-
 	public String[] mergeArrays(String[] first, String[] second){
 		if (first == null) return second;
 		if (second == null) return first;
