@@ -9,7 +9,6 @@ class BinaryTree{
 		Node right;
 
 		Node(String value){
-			//System.out.println(value);
 			this.value = value;
 		}
 
@@ -18,8 +17,6 @@ class BinaryTree{
 		}
 
 		public void insert(Node node){
-			// System.out.println("node:" + node);
-			// System.out.println("value:" + node.getValue());
 			if (node.getValue().compareToIgnoreCase(getValue()) > 0) {
 				if (right == null) right = node;
 				else right.insert(node);
